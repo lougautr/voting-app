@@ -110,3 +110,7 @@ body{
   width:50%;
   height:100%;
 }
+
+.animal-label {
+  font-size: 10px;
+}
