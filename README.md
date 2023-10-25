@@ -32,15 +32,24 @@ We therefore wrote a Dockerfile for each module (vote, worker and result) and a 
 The project is now launched with this command (to be able to run the project several times):
 docker compose up --build --force-recreate<br>
 
+To vote, simply go to the url 'localhost:8080', and to the url 'localhost:8081' to view the results.
+
 <h3>All Dockerfile(s)</h3>
+To write all the Dockerfiles, we adopted the behavior of the scripts.<br>
 For all images, we have chosen to use a version older than the latest to ensure the application works.<br>
 We decided to use a '/app' directory to work.
 
-<h3>/vote/Dockerfile</h3>
+<h3>vote/Dockerfile</h3>
+We opted for the exclusive copy of the requirements.txt file in order to optimize the installation of dependencies and improve layer caching.
+
+<h3>result/Dockerfile</h3>
+We chose to use the production environment rather than the development environment to optimize performance.
+We also chose to omit the installation of development dependencies for performance reasons.
+We created a node user (other than root) for security reasons.
 
 <h3>docker-compose</h3>
 We used volumes of type "volume" to be able to store database information. We chose this type because we don't need to directly interact with or visualize the data.<br>
-We used Netcat to test network connectivity between services.
+To probe the status of containers, we use wget. The wget allows you to check if the application is in service. We add the options --no-verbose to only retrieve error messages, --tries=1 to avoid infinite tries and --spider to not download the pages. The objective is only to check if the page is there.
 
 <h3>Change in source code:</h3>
 
