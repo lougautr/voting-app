@@ -27,7 +27,7 @@ In addition to these three modules, the application is based on two other essent
 
 This application was launched with several bash scripts. To make it cleaner and simpler to run, we decided to use Docker.<br>
 
-We therefore wrote a Dockerfile for each module (vote, worker and result) and a docker-compose.yml which is located at the root and which allows you to run the three Dockerfiles while downloading the necessary images and setting up the bases. of data and the dependencies between each service.<br>
+We therefore wrote a Dockerfile for each module (vote, worker and result) and a docker-compose.yml which is located at the root and which allows you to run the three Dockerfiles while downloading the necessary images and setting up the bases of data and the dependencies between each service.<br>
 
 The project is now launched with this command (to be able to run the project several times):
 docker compose up --build --force-recreate<br>
@@ -41,6 +41,9 @@ We decided to use a '/app' directory to work.
 
 <h3>vote/Dockerfile</h3>
 We opted for the exclusive copy of the requirements.txt file in order to optimize the installation of dependencies and improve layer caching.
+
+<h3>worker/Dockerfile</h3>
+We decided to make our Dockerfile multi-stage to be able to separate the build and execution phase. By doing this, our final stage only contains the executable and is therefore more optimized, faster, less cumbersome.
 
 <h3>result/Dockerfile</h3>
 We chose to use the production environment rather than the development environment to optimize performance.
