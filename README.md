@@ -55,7 +55,7 @@ We created a node user (other than root) for security reasons.
 <h3>docker-compose</h3>
 We used volumes of type "volume" to be able to store database information. We chose this type because we don't need to directly interact with or visualize the data.<br>
 To probe the status of containers, we use wget. The wget allows you to check if the application is in service. We add the options --no-verbose to only retrieve error messages, --tries=1 to avoid infinite tries and --spider to not download the pages. The objective is only to check if the page is there.<br>
-We put our postgres variables in an environment file to avoid putting the password in clear text in docker-compose.
+We put our postgres variables in an environment file env_file.env to avoid putting the password in clear text in docker-compose.
 
 <h3>Change in source code:</h3>
 
