@@ -6,6 +6,8 @@
   <li>Lou-Anne Gautherie</li>
 </ul>
 
+<h2>Project link: https://github.com/AntoninMontagne/voting-app.git</h2>
+
 <h2>Project presentation</h2>
 
 It's an application that has two web interfaces.
